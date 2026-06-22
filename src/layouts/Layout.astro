@@ -1,0 +1,42 @@
+---
+// Тут будемо підключати шрифти та спільні стилі
+---
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+    <title>Clean Shine</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --main-text-color: #1C2B36;
+    --secondary-text-color: #808D99;
+    --primary-color: #59ACF3;
+    --accent-main-color: #FFD659;
+    --accent-hover-clor: #FFC410;
+    --grey-700-stroke-color: #CCD5DE;
+    --grey-500-bg-color: #F1F6FA;
+    --grey-100-white-color: #F1F6FA;
+    --error-color: #EE2020;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Unbounded', sans-serif;
+    color: var(--main-text-color);
+    background-color: var(--grey-500-bg-color);
+  }
+</style>
