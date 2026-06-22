@@ -1,0 +1,59 @@
+---
+const { text, type = 'main', icon } = Astro.props;
+---
+
+<button class={`btn btn-${type}`}>
+  <span>{text}</span>
+  {icon && <span class="icon" style={`--icon-url: url('${icon}')`}></span>}
+</button>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-main {
+    background-color: var(--accent-main-color);
+    color: var(--main-text-color);
+  }
+
+  .btn-main:hover {
+    background-color: var(--accent-hover-color);
+  }
+
+  .btn-secondary {
+    justify-content: space-between;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--grey-700-stroke-color);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--grey-100-white-color);
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    background-color: currentColor;
+    mask-image: var(--icon-url);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: var(--icon-url);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  }
+</style>
