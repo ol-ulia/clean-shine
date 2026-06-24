@@ -1,0 +1,73 @@
+---
+const { text = "Нічого не залишимо без уваги — вимиємо всередині та зовні, а потім охайно все покладемо назад." } = Astro.props;
+---
+
+<div class="tooltip-wrapper">
+  <span class="info-icon" style="--icon-url: url('/icons/info.svg')"></span>
+  
+  <div class="tooltip-content">
+    {text}
+  </div>
+</div>
+
+<style>
+  .tooltip-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+  }
+
+  .info-icon {
+    width: 16px;
+    height: 16px;
+    background-color: var(--secondary-text-color);
+    mask-image: var(--icon-url);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: var(--icon-url);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .tooltip-content {
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 260px;
+    padding: 12px 12px;
+    background-color: var(--secondary-text-color);
+    color: var(--grey-100-white-color);
+    font-family: 'Google Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .tooltip-content::before {
+    content: '';
+    position: absolute;
+    bottom: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-height: 20px;
+    border-style: solid;
+    border-color: transparent transparent var(--secondary-text-color) transparent;
+  }
+
+  .tooltip-wrapper:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(8px);
+  }
+</style>
