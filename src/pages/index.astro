@@ -4,18 +4,10 @@ import Button from '../components/ui/Button.astro';
 import Input from '../components/ui/Input.astro';
 import Tabs from '../components/ui/Tabs.astro';
 import Tooltip from '../components/ui/Tooltip.astro';
+import Header from '../components/Header.astro'
 ---
 
 <Layout>
-  <h1>Головна сторінка Clean Shine</h1>
-  <Button text="Розрахувати вартість" />
-  <Button text="Детальніше" type="secondary" icon="/icons/right-arrow.svg" />
-
-  <div style="display: flex; flex-direction: column; gap: 24px; padding: 40px;">
-  <Input />
-  <Input />
-  <Input errorMessage="Будь ласка, заповніть це поле" />
-  <Tabs />
-  <Tooltip />
+  <Header />
 </div>
 </Layout>
