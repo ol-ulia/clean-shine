@@ -1,16 +1,20 @@
 ---
-const { placeholder = "(000) 000-00-00", errorMessage } = Astro.props;
+const { placeholder = "(000) 000-00-00", errorMessage, name = "phone" } = Astro.props;
 ---
 
 <div class="input-wrapper">
   <div class="input-with-prefix">
     <span class="prefix">+38</span>
     <div class="input-container">
-        <input type="tel" placeholder={placeholder} maxlength="15" class="phone-input" />
-        {errorMessage && <span class="error-icon" style={`--icon-url: url('/icons/warning.svg')`}></span>}
+      <input type="tel" name={name} placeholder={placeholder} maxlength="15" class="phone-input" />
+      {errorMessage && (
+        <svg class="error-icon" aria-hidden="true">
+          <use href="/sprite.svg#viber" />
+        </svg>
+      )}
     </div>
   </div>
-  
+
   {errorMessage && <span class="error-message">{errorMessage}</span>}
 </div>
 
@@ -84,45 +88,24 @@ const { placeholder = "(000) 000-00-00", errorMessage } = Astro.props;
   .error-icon {
     width: 20px;
     height: 20px;
-    margin-right: 12px;
-    background-color: var(--error-color); 
-    mask-image: var(--icon-url);
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-image: var(--icon-url);
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
+    margin-right: 16px;
+    color: var(--error-color);
+    flex-shrink: 0;
   }
 </style>
 
 <script>
-  function initPhoneMasks() {
-    const phoneInputs = document.querySelectorAll('.phone-input');
-    
-    phoneInputs.forEach(input => {
-      input.addEventListener('input', function (e) {
-        let value = this.value.replace(/\D/g, '');
-        let formattedValue = '';
+  document.querySelectorAll('.phone-input').forEach((input) => {
+    input.addEventListener('input', function (e) {
+      let value = this.value.replace(/\D/g, '');
+      let formattedValue = '';
 
-        if (value.length > 0) {
-          formattedValue += '(' + value.substring(0, 3);
-        }
-        if (value.length >= 4) {
-          formattedValue += ') ' + value.substring(3, 6);
-        }
-        if (value.length >= 7) {
-          formattedValue += '-' + value.substring(6, 8);
-        }
-        if (value.length >= 9) {
-          formattedValue += '-' + value.substring(8, 10);
-        }
+      if (value.length > 0) formattedValue += '(' + value.substring(0, 3);
+      if (value.length >= 4) formattedValue += ') ' + value.substring(3, 6);
+      if (value.length >= 7) formattedValue += '-' + value.substring(6, 8);
+      if (value.length >= 9) formattedValue += '-' + value.substring(8, 10);
 
-        this.value = formattedValue;
-      });
+      this.value = formattedValue;
     });
-  }
-
-  initPhoneMasks();
+  });
 </script>

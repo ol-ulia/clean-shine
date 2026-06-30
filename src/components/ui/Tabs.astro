@@ -1,10 +1,10 @@
 ---
-const { items = ['Прибирання', 'Хімчистка'], activeIndex = 1 } = Astro.props;
+const { items = ['Прибирання', 'Хімчистка'], activeIndex = 0 } = Astro.props;
 ---
 
 <div class="tabs-container">
   {items.map((item, index) => (
-    <button class={`tab ${index === activeIndex ? 'active' : ''}`}>
+    <button class={`tab ${index === activeIndex ? 'active' : ''}`} data-index={index}>
       {item}
     </button>
   ))}
@@ -14,6 +14,9 @@ const { items = ['Прибирання', 'Хімчистка'], activeIndex = 1 
   .tabs-container {
     display: flex;
     gap: 17px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
     border-bottom: 2px solid transparent;
   }
 
@@ -49,3 +52,19 @@ const { items = ['Прибирання', 'Хімчистка'], activeIndex = 1 
     background-color: var(--primary-color);
   }
 </style>
+
+<script>
+  document.querySelectorAll('.tabs-container').forEach((container) => {
+    const tabs = container.querySelectorAll('.tab');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const index = tab.getAttribute('data-index');
+        container.dispatchEvent(new CustomEvent('tabchange', { detail: { index } }));
+      });
+    });
+  });
+</script>

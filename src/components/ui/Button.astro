@@ -1,11 +1,26 @@
 ---
-const { text, type = 'main', icon } = Astro.props;
+const { text, type = 'main', icon, href } = Astro.props;
 ---
 
-<button class={`btn btn-${type}`}>
-  <span>{text}</span>
-  {icon && <span class="icon" style={`--icon-url: url('${icon}')`}></span>}
-</button>
+{href ? (
+  <a href={href} class={`btn btn-${type}`}>
+    <span>{text}</span>
+    {icon && (
+      <svg class="icon" aria-hidden="true">
+        <use href={`/sprite.svg#${icon}`} />
+      </svg>
+    )}
+  </a>
+) : (
+  <button class={`btn btn-${type}`}>
+    <span>{text}</span>
+    {icon && (
+      <svg class="icon" aria-hidden="true">
+        <use href={`/sprite.svg#${icon}`} />
+      </svg>
+    )}
+  </button>
+)}
 
 <style>
   .btn {
@@ -14,8 +29,10 @@ const { text, type = 'main', icon } = Astro.props;
     justify-content: center;
     padding: 12px 16px;
     gap: 8px;
+    font-family: 'Google Sans', sans-serif;
     font-size: 14px;
     font-weight: 700;
+    text-decoration: none;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -25,7 +42,6 @@ const { text, type = 'main', icon } = Astro.props;
     background-color: var(--accent-main-color);
     color: var(--main-text-color);
   }
-
   .btn-main:hover {
     background-color: var(--accent-hover-color);
   }
@@ -36,24 +52,24 @@ const { text, type = 'main', icon } = Astro.props;
     color: var(--primary-color);
     border: 1px solid var(--grey-700-stroke-color);
   }
-
   .btn-secondary:hover {
     background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    color: var(--grey-100-white-color);
+    border-color: var(--primary-color);
+    color: var(--100-white-color);
+  }
+
+  .btn-accent {
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    color: var(--100-white-color);
+  }
+  .btn-accent:hover {
+    opacity: 0.85;
   }
 
   .icon {
     width: 24px;
     height: 24px;
-    background-color: currentColor;
-    mask-image: var(--icon-url);
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-image: var(--icon-url);
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
+    flex-shrink: 0;
   }
 </style>
