@@ -2,68 +2,83 @@
 ---
 
 <header class="header">
-  <div class="container header-container">
-    <a href="/" class="logo-link">
-      <svg class="logo-large"><use href="/sprite.svg#logo-large"></use></svg>
-      <svg class="logo-mobile"><use href="/sprite.svg#logo-mobile"></use></svg>
+  <div class="header-container">
+
+    <a href="/" class="logo-link" aria-label="Clean Shine — головна">
+      <svg class="logo-large" aria-hidden="true"><use href="/sprite.svg#logo-large"></use></svg>
+      <svg class="logo-mobile" aria-hidden="true"><use href="/sprite.svg#logo-mobile"></use></svg>
     </a>
 
     <div class="contacts-wrapper">
+
       <div class="contact-row">
         <div class="social-group">
-          <a href="#" class="social-icon" aria-label="Viber"><svg class="icon"><use href="/sprite.svg#viber"></use></svg></a>
-          <a href="#" class="social-icon" aria-label="Telegram"><svg class="icon"><use href="/sprite.svg#telegram"></use></svg></a>
+          <a href="viber://..." class="social-icon social-icon--viber" aria-label="Viber">
+            <svg aria-hidden="true"><use href="/sprite.svg#up-arrow"></use></svg>
+          </a>
+          <a href="https://t.me/..." class="social-icon social-icon--telegram" aria-label="Telegram">
+            <svg aria-hidden="true"><use href="/sprite.svg#stars-filled"></use></svg>
+          </a>
         </div>
         <a href="tel:+380662069994" class="phone-link">+380 66 206 99 94</a>
       </div>
 
       <div class="contact-row">
-        <a href="https://instagram.com/clean.shine.ua" class="social-icon" target="_blank" aria-label="Instagram">
-          <svg class="icon"><use href="/sprite.svg#instagram"></use></svg>
+        <a href="https://instagram.com/clean.shine.ua" class="social-icon social-icon--instagram" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <defs>
+              <radialGradient id="ig-grad" cx="30%" cy="110%" r="140%">
+                <stop offset="0%" stop-color="#FFD521"/>
+                <stop offset="20%" stop-color="#FF7A00"/>
+                <stop offset="45%" stop-color="#FF0069"/>
+                <stop offset="70%" stop-color="#D300C5"/>
+                <stop offset="100%" stop-color="#7638FA"/>
+              </radialGradient>
+            </defs>
+            <rect width="24" height="24" rx="12" fill="url(#ig-grad)"/>
+            <path d="M12 6C13.6292 6 13.8344 6.007 14.4775 6.0332C15.118 6.0618 15.5536 6.16488 15.9346 6.3125C16.3275 6.46729 16.6637 6.67155 16.9971 7.00488C17.3305 7.33833 17.538 7.67202 17.6904 8.06738C17.8381 8.45087 17.9402 8.88704 17.9688 9.52539C17.9973 10.166 18.0049 10.3685 18.0049 12C18.0049 13.6315 17.9973 13.834 17.9688 14.4746C17.9402 15.1153 17.8381 15.5515 17.6904 15.9326C17.5356 16.3256 17.3305 16.6617 16.9971 16.9951C16.6637 17.3285 16.3299 17.5351 15.9346 17.6875C15.5512 17.8351 15.1156 17.9382 14.4775 17.9668C13.8368 17.9954 13.6336 18.002 12.002 18.002C10.3707 18.002 10.168 17.9954 9.52734 17.9668C8.88687 17.9382 8.45131 17.8351 8.07031 17.6875C7.67741 17.5327 7.34119 17.3284 7.00781 16.9951C6.67438 16.6617 6.46689 16.328 6.31445 15.9326C6.16678 15.5491 6.06472 15.113 6.03613 14.4746C6.00756 13.834 6 13.6291 6 12C6 10.3708 6.00755 10.1657 6.03613 9.52734C6.06472 8.88697 6.16687 8.45128 6.31445 8.07031C6.46928 7.6773 6.67435 7.34128 7.00781 7.00781C7.34128 6.67435 7.67492 6.46689 8.07031 6.31445C8.45133 6.16685 8.88725 6.06471 9.52539 6.03613C10.166 6.00756 10.3709 6 12 6ZM12 9.99902C10.8949 9.9991 9.99902 10.8948 9.99902 12C9.99902 13.1051 10.8949 14.0009 12 14.001C13.1052 14.001 14.001 13.1052 14.001 12C14.001 10.8948 13.1052 9.99902 12 9.99902ZM15.2041 8.07715C14.8068 8.07715 14.4844 8.3996 14.4844 8.79688C14.4846 9.19397 14.807 9.51562 15.2041 9.51562C15.6012 9.51541 15.9226 9.19384 15.9229 8.79688C15.9229 8.39973 15.6012 8.07736 15.2041 8.07715Z" fill="white"/>
+          </svg>
         </a>
-        <a href="https://instagram.com/clean.shine.ua" class="insta-link" target="_blank">Clean.shine.ua</a>
+        <a href="https://instagram.com/clean.shine.ua" class="insta-link" target="_blank" rel="noopener">
+          Clean.shine.ua
+        </a>
       </div>
+
     </div>
   </div>
 </header>
 
 <style>
-  /* Базовий контейнер (робимо його спільним для всіх секцій сайту) */
-  .container {
-    max-width: 1600px; 
-    max-height: 92px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
   .header {
-    background-color: var(--100-white-color); /* Білий фон з макета */
-    padding: 19px 215px 19px 215px; /* Відступи зверху і знизу */
+    background-color: var(--100-white-color);
+    padding: 19px 20px;
   }
 
   .header-container {
+    max-width: 1170px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    gap: 24px;
   }
 
-  /* Налаштування логотипів: за замовчуванням показуємо десктопний */
+  .logo-large {
+    display: block;
+    width: 244px;
+    height: 54px;
+  }
+
   .logo-mobile {
     display: none;
     width: 110px;
     height: 48px;
   }
 
-  .logo-large {
-    width: 244px;
-    height: 54px;
-  }
-
   .contacts-wrapper {
     display: flex;
-    gap: 56px; /* Відстань між двома блоками контактів на ПК */
     align-items: center;
+    gap: 56px;
   }
 
   .contact-row {
@@ -77,81 +92,76 @@
     gap: 12px;
   }
 
-  .social-icon .icon {
+  .social-icon--viber {
+    color: #7360F2;
+  }
+
+  .social-icon--telegram {
+    color: #29A9EB;
+  }
+
+  .social-icon--instagram svg {
     width: 24px;
     height: 24px;
-    transition: transform 0.3s ease;
   }
 
-  .social-icon:hover .icon {
-    transform: scale(1.1); /* Легке збільшення при наведенні */
+  .social-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
   }
 
-  /* Типографіка посилань */
-  .phone-link, .insta-link {
+  .social-icon:hover svg {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .phone-link,
+  .insta-link {
     font-family: 'Google Sans', sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--main-text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
   }
 
-  .phone-link:hover, .insta-link:hover {
+  .phone-link:hover,
+  .insta-link:hover {
     color: var(--primary-color);
   }
 
-  /* --- АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (Екрани менші за 768px) --- */
   @media (max-width: 768px) {
-    .container {
-    max-width: 393px; 
-    max-height: 80px;
-    margin: 0 auto;
-    padding: 0px;
-
-  }
-
-  .header {
-    background-color: var(--100-white-color); /* Білий фон з макета */
-    padding: 16px 16px 16px 16px; /* Відступи зверху і знизу */
-  }
-    .header-container {
-      /* Додаємо відстань між логотипом і контактами, якщо екран дуже вузький */
-      gap: 16px; 
+    .header {
+      padding: 16px;
     }
 
-    /* Ховаємо десктопний логотип, показуємо мобільний */
     .logo-large {
       display: none;
     }
-    
+
     .logo-mobile {
       display: block;
     }
 
-    /* Контакти ставимо в колонку (один під одним) */
     .contacts-wrapper {
       flex-direction: column;
-      align-items: flex-end; /* Вирівнюємо по правому краю */
+      align-items: flex-end;
       gap: 8px;
     }
 
     .contact-row {
-    gap: 4px;
-  }
+      gap: 8px;
+    }
 
-  .social-group {
-    gap: 8px;
-  }
-
-  .social-icon .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-    /* Зменшуємо шрифти для мобілки */
-    .phone-link, .insta-link {
+    .phone-link,
+    .insta-link {
       font-size: 14px;
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
     }
   }
 </style>
